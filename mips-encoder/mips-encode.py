@@ -1,4 +1,5 @@
 import json
+import sys
 
 instructionsetFile = open("instructionset.json")
 instructionset=json.loads(instructionsetFile.read())
@@ -27,7 +28,7 @@ def encodeLine(line):
 
         return "".join([opcodeBin,rsBin,rtBin,immBin])
 
-def encodeFile(filename):
+def encodeFile(filename, outFile=sys.stdout):
     try:
         f=open(filename)
     except FileNotFoundError:
@@ -35,6 +36,6 @@ def encodeFile(filename):
         return
 
     for line in f:
-        print(encodeLine(line.strip()))
+        print(encodeLine(line.strip()),file=outFile)
 
-encodeFile(input().strip())
+# encodeFile(input().strip())
