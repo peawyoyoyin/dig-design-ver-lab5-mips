@@ -1,0 +1,37 @@
+{
+  "add" : {
+    "type" : "R",
+    "opcode" : "00",
+    "funct" : "20"
+  },
+  "addi" : {
+    "type" : "I",
+    "opcode" : "08"
+  },
+  "beq" : {
+    "type" : "I",
+    "opcode" : "04"
+  },
+  "lui" : {
+    "type" : "I",
+    "opcode" : "0f"
+  },
+  "lw" : {
+    "type" : "I",
+    "opcode" : "23"
+  },
+  "sw" : {
+    "type" : "I",
+    "opcode" : "2b"
+  },
+  "srl" : {
+    "type" : "R",
+    "opcode" : "00",
+    "funct" : "02"
+  },
+  "sll" : {
+    "type" : "I",
+    "opcode" : "00",
+    "funct" : "00"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "00" : {
+    "type" : "R",
+    "variations": {
+      "00" : {
+        "name" : "sll",
+        "rtl" : "R[$rd] <= R[$rt] << $shamt"
+      },
+      "02" : {
+        "name" : "srl",
+        "rtl" : "R[$rd] <= R[$rt] >>> $shamt"
+      },
+      "20" : {
+        "name" : "add",
+        "rtl" : "R[$rd] <= R[$rs] + R[$rt]"
+      }
+    }
+  },
+  "04" : {
+    "type" : "I",
+    "name" : "beq",
+    "rtl" : "if(R[$rs] == R[$rt]) PC <= PC + ($imm) + 1"
+  },
+  "08" : {
+    "type" : "I",
+    "name" : "addi",
+    "rtl" : "R[$rt] <= R[$rs] + $SignExtImm"
+  },
+  "0f" : {
+    "type" : "I",
+    "name" : "lui",
+    "rtl" : "R[$rt] <= { $imm ,16'b0 }"
+  },
+  "23" : {
+    "type" : "I",
+    "name" : "lw",
+    "rtl" : "R[$rt] <= M[R[$rs] + $SignExtImm]"
+  },
+  "2b" : {
+    "type" : "I",
+    "name" : "sw",
+    "rtl" : "M[R[$rs] + $SignExtImm] <= R[$rt]"
+  }
+}
