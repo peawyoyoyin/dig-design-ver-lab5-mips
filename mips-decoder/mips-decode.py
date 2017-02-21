@@ -7,7 +7,6 @@ import sys
 instructionsetFile = open("instructionset.json")
 instructionset = json.loads(instructionsetFile.read())
 
-## input binary file
 def decodeLine(line):
     opcodeBin = line[0:6]
     opcode = "{0:02x}".format(int(opcodeBin,2))
@@ -56,6 +55,16 @@ def decodeLine(line):
 
         return " ".join([instruction["name"],rs,rt,imm])
 
+    if(instruction["type"] == "J"):
+        jumpAddrBin = line[6:32]
+
+        jumpAddr = "{0:07x}".format(int(jumpAddrBin,2))
+
+        rtlTemplate = string.Template(instruction["rtl"])
+        rtlString = rtlTemplate.substitute(jumpAddr=jumpAddr)
+
+        return " ".join([instruction["name"],jumpAddr])
+
 def decodeFile(filename, outFile=sys.stdout):
     try:
         f=open(filename)
@@ -65,6 +74,3 @@ def decodeFile(filename, outFile=sys.stdout):
 
     for line in f:
         print(decodeLine(line), file=outFile)
-
-
-# decode(input("input filename"), [False,True][input("rtl?(Y/N)").strip() == "Y"])

@@ -1,5 +1,6 @@
 import json
 import sys
+import getopt
 
 instructionsetFile = open("instructionset.json")
 instructionset=json.loads(instructionsetFile.read())
@@ -27,6 +28,11 @@ def encodeLine(line):
         immBin = "{0:016b}".format(int(tokens[3],16))
 
         return "".join([opcodeBin,rsBin,rtBin,immBin])
+    elif(instr["type"] == "J"):
+        opcodeBin = "{0:06b}".format(int(instr["opcode"],16))
+        jumpAddrBin = "{0:026b}".format(int(tokens[1],16))
+
+        return "".join([opcodeBin,jumpAddrBin])
 
 def encodeFile(filename, outFile=sys.stdout):
     try:
@@ -37,5 +43,3 @@ def encodeFile(filename, outFile=sys.stdout):
 
     for line in f:
         print(encodeLine(line.strip()),file=outFile)
-
-# encodeFile(input().strip())

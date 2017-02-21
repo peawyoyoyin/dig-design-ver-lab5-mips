@@ -16,6 +16,11 @@
       }
     }
   },
+  "02" : {
+    "type" : "J",
+    "name" : "j",
+    "rtl" : "PC <= $jumpAddr"
+  },
   "04" : {
     "type" : "I",
     "name" : "beq",

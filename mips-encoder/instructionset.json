@@ -33,5 +33,9 @@
     "type" : "I",
     "opcode" : "00",
     "funct" : "00"
+  },
+  "j" : {
+    "type" : "J",
+    "opcode" : "02"
   }
 }
